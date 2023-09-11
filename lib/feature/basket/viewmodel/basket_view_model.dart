@@ -4,7 +4,6 @@ import 'package:computer_store_app/core/components/toast-message/toast_message.d
 import 'package:computer_store_app/core/constants/enums/page_state.dart';
 import 'package:computer_store_app/core/constants/http/http_url.dart';
 import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
-import 'package:computer_store_app/core/extension/string_extension.dart';
 import 'package:computer_store_app/core/init/language/locale_keys.g.dart';
 import 'package:computer_store_app/core/init/navigation/navigation_service.dart';
 import 'package:dio/dio.dart';

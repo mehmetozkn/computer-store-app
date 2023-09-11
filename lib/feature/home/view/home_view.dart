@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -57,27 +57,31 @@ class _HomeViewState extends State<HomeView>
           body: Column(
             children: [
               buildTabBar(context, viewModel),
-              Observer(
-                builder: (_) {
-                  switch (viewModel.pageState) {
-                    case PageState.LOADING:
-                      return const Center(child: CircularProgressIndicator());
-                    case PageState.ERROR:
-                      return const Center(
-                          child: LocaleText(
-                              text: LocaleKeys.error_unexpectedError));
-
-                    case PageState.SUCCESS:
-                      return buildListView(viewModel);
-                    default:
-                      return const Center(
-                          child: LocaleText(text: LocaleKeys.error_noProduct));
-                  }
-                },
-              ),
+              buildPageView(viewModel),
             ],
           ),
         );
+      },
+    );
+  }
+
+  Observer buildPageView(HomeViewModel viewModel) {
+    return Observer(
+      builder: (_) {
+        switch (viewModel.pageState) {
+          case PageState.LOADING:
+            return const Center(child: CircularProgressIndicator());
+          case PageState.ERROR:
+            return const Center(
+              child: LocaleText(text: LocaleKeys.error_unexpectedError),
+            );
+
+          case PageState.SUCCESS:
+            return buildListView(viewModel);
+          default:
+            return const Center(
+                child: LocaleText(text: LocaleKeys.error_noProduct));
+        }
       },
     );
   }
@@ -112,18 +116,28 @@ class _HomeViewState extends State<HomeView>
             Tab(
               child: Text(
                 'All',
+                textAlign: TextAlign.center,
                 style: viewModel.style,
               ),
             ),
             Tab(
               child: Text(
                 '8GB RAM',
+                textAlign: TextAlign.center,
                 style: viewModel.style,
               ),
             ),
             Tab(
               child: Text(
                 '16GB RAM',
+                textAlign: TextAlign.center,
+                style: viewModel.style,
+              ),
+            ),
+            Tab(
+              child: Text(
+                '32GB RAM',
+                textAlign: TextAlign.center,
                 style: viewModel.style,
               ),
             ),
@@ -135,6 +149,8 @@ class _HomeViewState extends State<HomeView>
               viewModel.getProductsByRam(8);
             } else if (index == 2) {
               viewModel.getProductsByRam(16);
+            } else if (index == 3) {
+              viewModel.getProductsByRam(32);
             }
           },
         ),

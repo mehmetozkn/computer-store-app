@@ -1,9 +1,8 @@
-import 'package:computer_store_app/core/base/model/base_view_model.dart';
-import 'package:computer_store_app/core/components/toast-message/toast_message.dart';
-import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
-import 'package:computer_store_app/core/extension/string_extension.dart';
-import 'package:computer_store_app/core/init/language/locale_keys.g.dart';
-import 'package:computer_store_app/core/init/navigation/navigation_service.dart';
+import '../../../core/base/model/base_view_model.dart';
+import '../../../core/components/toast-message/toast_message.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/init/navigation/navigation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -33,7 +32,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      ToastMessage.instance.buildMessage(LocaleKeys.login_doingLogin);
+      await ToastMessage.instance.buildMessage(LocaleKeys.login_doingLogin);
       NavigationService.instance.navigateToPageClear(
         path: NavigationConstants.HOME_VIEW,
       );

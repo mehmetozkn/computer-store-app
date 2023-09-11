@@ -1,10 +1,10 @@
+import 'package:computer_store_app/core/components/button/custom_icon_button.dart';
 import 'package:computer_store_app/core/components/localetext/locale_text.dart';
 import 'package:computer_store_app/core/constants/enums/page_state.dart';
 import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
 import 'package:computer_store_app/core/extension/string_extension.dart';
 import 'package:computer_store_app/core/init/language/locale_keys.g.dart';
 import 'package:computer_store_app/core/init/navigation/navigation_service.dart';
-import 'package:computer_store_app/feature/home/viewmodel/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -158,11 +158,9 @@ class BasketView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                buildProductName(
+                                buildProductNameText(
                                     viewModel.products, index, context),
-                                Text(viewModel
-                                        .products[index].product?.processor ??
-                                    ''),
+                                buildProductProcessorText(viewModel, index),
                                 Text(
                                     '${viewModel.products[index].product?.ram?.toString() ?? ''} GB RAM'),
                                 Text(
@@ -181,51 +179,22 @@ class BasketView extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
-                                    Observer(builder: (_) {
-                                      return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.remove,
-                                              color: Colors.deepOrangeAccent,
-                                            ),
-                                            onPressed: () =>
-                                                viewModel.addProductToBasket(
-                                              viewModel
-                                                  .products[index].product?.id,
-                                              -1,
-                                              viewModel
-                                                  .products[index].quantity,
-                                            ),
-                                          ),
-                                          Text(
-                                            '${viewModel.products[index].quantity}',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          ),
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.add,
-                                              color: Colors.deepOrangeAccent,
-                                            ),
-                                            onPressed: () =>
-                                                viewModel.addProductToBasket(
-                                              viewModel
-                                                  .products[index].product?.id,
-                                              1,
-                                              viewModel
-                                                  .products[index].quantity,
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    }),
+                                    Observer(
+                                      builder: (_) {
+                                        return Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            buildRemoveProductIconButton(
+                                                viewModel, index),
+                                            buildProductCounterText(
+                                                viewModel, index, context),
+                                            buildAddProductIconButton(
+                                                viewModel, index),
+                                          ],
+                                        );
+                                      },
+                                    ),
                                   ],
                                 ),
                               ],
@@ -242,7 +211,52 @@ class BasketView extends StatelessWidget {
     );
   }
 
-  Text buildProductName(
+  Text buildProductProcessorText(BasketViewModel viewModel, int index) {
+    return Text(viewModel.products[index].product?.processor ?? '');
+  }
+
+  CustomIconButton buildAddProductIconButton(
+      BasketViewModel viewModel, int index) {
+    return CustomIconButton(
+      onPressed: () => viewModel.addProductToBasket(
+        viewModel.products[index].product?.id,
+        1,
+        viewModel.products[index].quantity,
+      ),
+      icon: const Icon(
+        Icons.add,
+        color: Colors.deepOrangeAccent,
+      ),
+    );
+  }
+
+  Text buildProductCounterText(
+      BasketViewModel viewModel, int index, BuildContext context) {
+    return Text(
+      '${viewModel.products[index].quantity}',
+      style: Theme.of(context)
+          .textTheme
+          .bodyLarge
+          ?.copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+
+  CustomIconButton buildRemoveProductIconButton(
+      BasketViewModel viewModel, int index) {
+    return CustomIconButton(
+      onPressed: () => viewModel.addProductToBasket(
+        viewModel.products[index].product?.id,
+        -1,
+        viewModel.products[index].quantity,
+      ),
+      icon: const Icon(
+        Icons.remove,
+        color: Colors.deepOrangeAccent,
+      ),
+    );
+  }
+
+  Text buildProductNameText(
       List<BasketProductModel> products, int index, BuildContext context) {
     return Text(
       products[index].product?.name ?? '',

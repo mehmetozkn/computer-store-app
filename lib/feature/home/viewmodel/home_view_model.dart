@@ -1,13 +1,16 @@
 import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
+
 import '../../../core/base/model/base_view_model.dart';
 import '../../../core/components/toast-message/toast_message.dart';
 import '../../../core/constants/enums/page_state.dart';
 import '../../../core/constants/http/http_url.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../model/product_model.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+
 part 'home_view_model.g.dart';
 
 class HomeViewModel = _HomeViewModelBase with _$HomeViewModel;

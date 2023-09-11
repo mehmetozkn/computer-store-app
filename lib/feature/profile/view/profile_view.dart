@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
 import '../../../core/base/view/base_view.dart';
 import '../../../core/components/localetext/locale_text.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
@@ -133,6 +132,13 @@ class _ProfileViewState extends State<ProfileView> {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
+                Text(
+                  ' - ${context.locale.countryCode.toString()}',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.deepOrangeAccent,
+                        fontWeight: FontWeight.bold,
+                      ),
+                )
               ],
             ),
           )
