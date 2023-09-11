@@ -10,7 +10,7 @@
         "email": "Email",
         "password": "Parola",
         "forgotText": "Parolamı Unuttum",
-        "dontAccount": "Hesap Mevcut Değil",
+        "dontAccount": "Hesabın Yok Mu?",
         "doingLogin": "Giriş Yapılıyor..."
       },
       "register": {
@@ -18,7 +18,7 @@
         "signup": "Kaydol",
         "email": "E-posta",
         "password": "Parola",
-        "haveAccount": "Mevcut Hesabına",
+        "haveAccount": "Zaten Hesabım Var",
         "createAccount": "Hesap Oluştur"
       },
 

@@ -15,9 +15,9 @@ class HttpUrls {
   String get createUser => "http://localhost:8080/v1/user/create";
 
   String get getProductsByUserId =>
-      "http://localhost:8080/v1/user/getProductsByUserId/5";
+      "http://localhost:8080/v1/user/getProductsByUserId/17";
 
-  String get getUserByUserId => "http://localhost:8080/v1/user/getUserById/5";
+  String get getUserByUserId => "http://localhost:8080/v1/user/getUserById/17";
 
   HttpUrls._init();
 }

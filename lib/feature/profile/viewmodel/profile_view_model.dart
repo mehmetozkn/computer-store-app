@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+
 import '../../../core/base/model/base_view_model.dart';
 import '../../../core/constants/enums/page_state.dart';
 import '../../../core/constants/http/http_url.dart';
 import '../model/user_model.dart';
+
 part 'profile_view_model.g.dart';
 
 class ProfileViewModel = _ProfileViewModelBase with _$ProfileViewModel;

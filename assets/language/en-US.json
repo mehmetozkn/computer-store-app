@@ -10,7 +10,7 @@
         "email": "Email",
         "password": "Password",
         "forgotText": "Forgot Password",
-        "dontAccount": "Account Not Available",
+        "dontAccount": "Don't You Have an Account?",
         "doingLogin": "Logging In..."
       },
       "register": {

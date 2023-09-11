@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../../core/base/view/base_view.dart';
 import '../../../core/components/localetext/locale_text.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
@@ -6,8 +8,6 @@ import '../../../core/extension/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/init/navigation/navigation_service.dart';
 import '../viewmodel/register_view_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -46,7 +46,7 @@ class RegisterView extends StatelessWidget {
       height: context.height * 0.03,
       indent: context.height * 0.08,
       endIndent: context.height * 0.08,
-      color: Colors.blue[300],
+      color: Colors.black,
       thickness: 1,
     );
   }

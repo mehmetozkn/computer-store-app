@@ -43,8 +43,6 @@ abstract class _RegisterViewModelBase with Store, BaseViewModel {
 
     try {
       await Dio().post(url, data: data);
-      NavigationService.instance
-          .navigateToPage(path: NavigationConstants.HOME_VIEW);
     } catch (error) {
       ToastMessage.instance.buildMessage(LocaleKeys.error_errorCreateAccount);
     }
@@ -64,10 +62,11 @@ abstract class _RegisterViewModelBase with Store, BaseViewModel {
 
       createUser(name, surname, email);
 
-      ToastMessage.instance.buildMessage(LocaleKeys.toastMessage_accountCreate);
+      await ToastMessage.instance
+          .buildMessage(LocaleKeys.toastMessage_accountCreate);
 
       NavigationService.instance.navigateToPageClear(
-        path: NavigationConstants.SPLASH_VIEW,
+        path: NavigationConstants.HOME_VIEW,
       );
     } on FirebaseAuthException {
       ToastMessage.instance.buildMessage(LocaleKeys.error_unexpectedError);

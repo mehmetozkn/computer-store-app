@@ -7,9 +7,4 @@ class ImageConstants {
   }
 
   ImageConstants._init();
-
-  String get maviIzLogo => toPng("example");
-
-  String toJpeg(String name) => "assets/images/$name.jpeg";
-  String toPng(String name) => "assets/images/$name.png";
 }

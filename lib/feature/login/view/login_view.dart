@@ -1,8 +1,7 @@
-import 'package:computer_store_app/core/components/localetext/locale_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/localetext/locale_text.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/extension/string_extension.dart';
@@ -40,20 +39,26 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  TextButton buildCreateAccountField(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        NavigationService.instance.navigateToPage(
-          path: NavigationConstants.REGISTER_VIEW,
-        );
-      },
-      child: LocaleText(
-        text: LocaleKeys.register_createAccount,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: Colors.deepOrangeAccent,
-              fontWeight: FontWeight.bold,
-            ),
-      ),
+  Row buildCreateAccountField(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const LocaleText(text: LocaleKeys.login_dontAccount),
+        TextButton(
+          onPressed: () {
+            NavigationService.instance.navigateToPage(
+              path: NavigationConstants.REGISTER_VIEW,
+            );
+          },
+          child: LocaleText(
+            text: LocaleKeys.register_createAccount,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Colors.deepOrangeAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
+      ],
     );
   }
 

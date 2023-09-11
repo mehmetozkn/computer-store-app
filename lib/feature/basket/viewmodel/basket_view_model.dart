@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:computer_store_app/core/components/toast-message/toast_message.dart';
-import 'package:computer_store_app/core/constants/enums/page_state.dart';
-import 'package:computer_store_app/core/constants/http/http_url.dart';
-import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
-import 'package:computer_store_app/core/init/language/locale_keys.g.dart';
-import 'package:computer_store_app/core/init/navigation/navigation_service.dart';
+import '../../../core/components/toast-message/toast_message.dart';
+import '../../../core/constants/enums/page_state.dart';
+import '../../../core/constants/http/http_url.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/init/navigation/navigation_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -44,7 +44,8 @@ abstract class _BasketViewModelBase with Store, BaseViewModel {
   Future<void> addProductToBasket(
       int? productId, int value, int? quantity) async {
     String url = HttpUrls.instance.addProductToBasket;
-    int id = int.parse(HttpUrls.instance.getProductsByUserId.characters.last);
+    int id = int.parse(
+        HttpUrls.instance.getProductsByUserId.substring(url.length - 3));
     var data = {};
 
     if (quantity! > 0) {

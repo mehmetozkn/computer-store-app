@@ -1,4 +1,4 @@
-import 'package:computer_store_app/core/components/button/custom_icon_button.dart';
+import 'package:computer_store_app/core/components/icon-button/custom_icon_button.dart';
 import 'package:computer_store_app/core/components/localetext/locale_text.dart';
 import 'package:computer_store_app/core/constants/enums/page_state.dart';
 import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
@@ -277,7 +277,7 @@ class BasketView extends StatelessWidget {
       ),
       leading: IconButton(
         onPressed: () {
-          NavigationService.instance.navigateToPage(
+          NavigationService.instance.navigateToPageClear(
             path: NavigationConstants.HOME_VIEW,
           );
         },
