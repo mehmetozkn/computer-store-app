@@ -43,6 +43,9 @@ class _ProfileViewState extends State<ProfileView> {
                 buildNameSurnameCircle(viewModel, context),
                 buildNameSurnameField(context, viewModel),
                 buildEmailField(context, viewModel),
+                SizedBox(
+                  height: context.height * 0.05,
+                ),
                 buildChangeLanguage(context),
                 buildLogoutField(context),
               ],

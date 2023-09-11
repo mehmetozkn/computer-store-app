@@ -45,13 +45,14 @@ abstract class _BasketViewModelBase with Store, BaseViewModel {
   Future<void> addProductToBasket(
       int? productId, int value, int? quantity) async {
     String url = HttpUrls.instance.addProductToBasket;
+    int id = int.parse(HttpUrls.instance.getProductsByUserId.characters.last);
     var data = {};
 
     if (quantity! > 0) {
-      data = {"userId": 1, "productId": productId, "quantity": value};
+      data = {"userId": id, "productId": productId, "quantity": value};
     } else if (quantity == 0) {
       data = {
-        "userId": 1,
+        "userId": id,
         "productId": productId,
         "quantity": value > 0 ? value : 0
       };

@@ -1,17 +1,14 @@
-import 'package:computer_store_app/core/components/localetext/locale_text.dart';
-import 'package:computer_store_app/core/constants/enums/page_state.dart';
-import 'package:computer_store_app/core/constants/navigation/navigation_constants.dart';
-import 'package:computer_store_app/core/extension/string_extension.dart';
-import 'package:computer_store_app/core/init/language/language_manager.dart';
-import 'package:computer_store_app/core/init/language/locale_keys.g.dart';
-import 'package:computer_store_app/core/init/navigation/navigation_service.dart';
-import 'package:computer_store_app/feature/home/model/product_model.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/localetext/locale_text.dart';
+import '../../../core/constants/enums/page_state.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/extension/context_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/init/navigation/navigation_service.dart';
+import '../model/product_model.dart';
 import '../viewmodel/home_view_model.dart';
 
 class HomeView extends StatefulWidget {

@@ -26,9 +26,9 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
 
   Future<void> addProductToBasket(int productId) async {
     final url = HttpUrls.instance.addProductToBasket;
-
+    int id = int.parse(HttpUrls.instance.getProductsByUserId.characters.last);
     final data = {
-      "userId": 1,
+      "userId": id,
       "productId": productId,
       "quantity": 1,
     };
